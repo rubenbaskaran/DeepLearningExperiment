@@ -22,12 +22,9 @@ MinMaxScaler().fit(X_train)
 X_train = MinMaxScaler().transform(X_train)
 X_test = MinMaxScaler().transform(X_test)
 
-model = tf.keras.models.Sequential([
-  tf.keras.layers.Dense(4, activation='relu'),
-  tf.keras.layers.Dense(2, activation='relu'),
-  tf.keras.layers.Dense(1)
-])
-
-
-
-
+# Define layers with neurons and activation function
+model = tf.keras.models.Sequential()
+model.add(tf.keras.layers.Dense(4, activation="relu"))
+model.add(tf.keras.layers.Dense(4, activation="relu"))
+model.add(tf.keras.layers.Dense(4, activation="relu"))
+model.add(tf.keras.layers.Dense(1))
