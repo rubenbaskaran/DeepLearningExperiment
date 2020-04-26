@@ -27,7 +27,7 @@ X_test = scaler.transform(X_test)
 
 # Define layers with neurons and activation function
 model = tf.keras.models.Sequential()
-model.add(tf.keras.layers.Dense(4, activation="relu"))
+model.add(tf.keras.layers.Dense(2, activation="relu"))
 model.add(tf.keras.layers.Dense(4, activation="relu"))
 model.add(tf.keras.layers.Dense(4, activation="relu"))
 model.add(tf.keras.layers.Dense(1))
@@ -36,7 +36,7 @@ model.add(tf.keras.layers.Dense(1))
 model.compile(optimizer="rmsprop", loss="mse")
 
 # Train the model
-model.fit(x=X_train, y=y_train, epochs=250, verbose=1)
+model.fit(x=X_train, y=y_train, validation_data=(X_test, y_test), batch_size=10, epochs=250, verbose=1)
 
 # Plot error vs. epochs
 loss_df = pd.DataFrame(model.history.history)
